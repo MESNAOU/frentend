@@ -10,8 +10,7 @@ RUN npm run build --prod
 FROM nginx:1.25.3-alpine
 ENV NODE_ENV production
 
-RUN apk --no-cache upgrade && \
-    apk --no-cache add libx11@1.8.7-r0 openssl@1.1.1l-r0
+RUN apt-get update && apt-get upgrade -y
 
 COPY --from=builder /app/* /usr/share/nginx/html/
 EXPOSE 80
