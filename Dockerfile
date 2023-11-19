@@ -7,7 +7,7 @@ RUN npm install
 COPY . .
 RUN npm run build --prod
 
-FROM nginx:alpine3.18
+FROM nginx:alpine
 ENV NODE_ENV production
 COPY --from=builder /app/* /usr/share/nginx/html/
 EXPOSE 80
