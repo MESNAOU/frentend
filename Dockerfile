@@ -1,13 +1,13 @@
 # syntax=docker/dockerfile:1
 
-FROM node:21-alpine as builder
+FROM node:21-alpine3.17 as builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build --prod
 
-FROM nginx:1.25.3-alpine
+FROM nginx:alpine3.18-slim
 ENV NODE_ENV production
 
 RUN apk --no-cache upgrade && \
