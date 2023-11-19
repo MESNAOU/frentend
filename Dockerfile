@@ -4,9 +4,6 @@ FROM node:21-alpine3.17 as builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-
-RUN apt-get update && apt-get upgrade -y
-
 COPY . .
 RUN npm run build --prod
 
